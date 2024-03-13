@@ -61,8 +61,8 @@ return [
             'rules' => [
 
                 '' => 'site/index',                                
-                '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',
-
+                // '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+                // 'user-car/<action:\w+>' => 'user-car/<action>',
 
                 // '/' => 'site/index',
                 // '/index' => 'site/index',

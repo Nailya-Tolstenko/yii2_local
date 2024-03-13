@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Мар 12 2024 г., 11:25
+-- Время создания: Мар 13 2024 г., 09:14
 -- Версия сервера: 8.0.36-0ubuntu0.22.04.1
 -- Версия PHP: 8.3.3-1+ubuntu22.04.1+deb.sury.org+1
 
@@ -67,6 +67,28 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`, `verification_token`) VALUES
 (1, 'admin', 'ks5g2FupKyJTxlQkQlYYoZ1hb5DUkScK', '$2y$13$zbM8Hb0dM6TG/xGsM6/caO8ZH4fngThF2NT4yIxJuWTWrxmoB39S2', NULL, 'nailya026@gmail.com', 10, 1710224673, 1710224673, 'eaGVL7ErrBHhiuZOXs_xREh6uWxDMbxP_1710224673');
 
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `user_car`
+--
+
+CREATE TABLE `user_car` (
+  `id` int UNSIGNED NOT NULL COMMENT 'id',
+  `id_user` int UNSIGNED NOT NULL COMMENT 'пользователь',
+  `car` varchar(50) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'авто',
+  `color` char(6) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'цвет'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Дамп данных таблицы `user_car`
+--
+
+INSERT INTO `user_car` (`id`, `id_user`, `car`, `color`) VALUES
+(1, 1, 'soul', 'yellow'),
+(2, 1, 'bmw', 'blue'),
+(3, 1, 'kia', 'black');
+
 --
 -- Индексы сохранённых таблиц
 --
@@ -87,6 +109,14 @@ ALTER TABLE `user`
   ADD UNIQUE KEY `password_reset_token` (`password_reset_token`);
 
 --
+-- Индексы таблицы `user_car`
+--
+ALTER TABLE `user_car`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_user` (`id_user`),
+  ADD KEY `color` (`color`);
+
+--
 -- AUTO_INCREMENT для сохранённых таблиц
 --
 
@@ -95,6 +125,22 @@ ALTER TABLE `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT для таблицы `user_car`
+--
+ALTER TABLE `user_car`
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id', AUTO_INCREMENT=4;
+
+--
+-- Ограничения внешнего ключа сохраненных таблиц
+--
+
+--
+-- Ограничения внешнего ключа таблицы `user_car`
+--
+ALTER TABLE `user_car`
+  ADD CONSTRAINT `user_car_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
