@@ -19,9 +19,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id_user') ?>
 
-    <?= $form->field($model, 'car') ?>
+    <?= $form->field($model, 'id_user_car_color') ?>
 
-    <?= $form->field($model, 'color') ?>
+    <?= $form->field($model, 'car') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

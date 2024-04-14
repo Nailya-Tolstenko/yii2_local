@@ -17,8 +17,8 @@ class UserCarSearch extends UserCar
     public function rules()
     {
         return [
-            [['id', 'id_user'], 'integer'],
-            [['car', 'color'], 'safe'],
+            [['id', 'id_user', 'id_user_car_color'], 'integer'],
+            [['car'], 'safe'],
         ];
     }
 
@@ -60,10 +60,10 @@ class UserCarSearch extends UserCar
         $query->andFilterWhere([
             'id' => $this->id,
             'id_user' => $this->id_user,
+            'id_user_car_color' => $this->id_user_car_color,
         ]);
 
-        $query->andFilterWhere(['like', 'car', $this->car])
-            ->andFilterWhere(['like', 'color', $this->color]);
+        $query->andFilterWhere(['like', 'car', $this->car]);
 
         return $dataProvider;
     }

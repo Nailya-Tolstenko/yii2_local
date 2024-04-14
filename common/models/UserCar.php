@@ -9,10 +9,11 @@ use Yii;
  *
  * @property int $id id
  * @property int $id_user пользователь
+ * @property int $id_user_car_color цвет
  * @property string $car авто
- * @property string $color цвет
  *
  * @property User $user
+ * @property UserCarColor $userCarColor
  */
 class UserCar extends \yii\db\ActiveRecord
 {
@@ -30,11 +31,11 @@ class UserCar extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_user', 'car', 'color'], 'required'],
-            [['id_user'], 'integer'],
+            [['id_user', 'id_user_car_color', 'car'], 'required'],
+            [['id_user', 'id_user_car_color'], 'integer'],
             [['car'], 'string', 'max' => 50],
-            [['color'], 'string', 'max' => 6],
             [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['id_user' => 'id']],
+            [['id_user_car_color'], 'exist', 'skipOnError' => true, 'targetClass' => UserCarColor::class, 'targetAttribute' => ['id_user_car_color' => 'id']],
         ];
     }
 
@@ -46,8 +47,8 @@ class UserCar extends \yii\db\ActiveRecord
         return [
             'id' => 'id',
             'id_user' => 'пользователь',
+            'id_user_car_color' => 'цвет',
             'car' => 'авто',
-            'color' => 'цвет',
         ];
     }
 
@@ -59,5 +60,15 @@ class UserCar extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::class, ['id' => 'id_user']);
+    }
+
+    /**
+     * Gets query for [[UserCarColor]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUserCarColor()
+    {
+        return $this->hasOne(UserCarColor::class, ['id' => 'id_user_car_color']);
     }
 }

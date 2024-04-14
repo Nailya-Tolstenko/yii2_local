@@ -64,6 +64,7 @@ class SiteController extends Controller
     {
     
         return $this->render('index');
+   
     }
 
     /**
@@ -89,6 +90,7 @@ class SiteController extends Controller
         return $this->render('login', [
             'model' => $model,
         ]);
+
     }
 
     /**
@@ -102,4 +104,5 @@ class SiteController extends Controller
 
         return $this->goHome();
     }
+
 }

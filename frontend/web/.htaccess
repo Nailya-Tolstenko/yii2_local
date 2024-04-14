@@ -5,6 +5,7 @@ RewriteEngine On
 RewriteBase /
 RewriteCond %{HTTP_HOST} (.*)
 RewriteCond %{REQUEST_URI} /$ [NC]
+RewriteRule ^fonts/(.*)$ web/fonts/$1 [L]
 RewriteRule ^(.*)(/)$ $1 [L,R=301]
 
 # Если это папка или файл, открываем ее/его

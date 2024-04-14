@@ -31,8 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'id_user',
+            'id_user_car_color',
             'car',
-            'color',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, UserCar $model, $key, $index, $column) {

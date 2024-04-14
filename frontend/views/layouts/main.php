@@ -36,6 +36,7 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'Aticles', 'url' => ['/post/index']],
         ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
     ];
@@ -61,7 +62,7 @@ AppAsset::register($this);
     ?>
 </header>
 
-<main role="main" class="flex-shrink-0">
+<main role="main" class="flex-shrink-0" style="margin: 50px 0 0;">
     <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],

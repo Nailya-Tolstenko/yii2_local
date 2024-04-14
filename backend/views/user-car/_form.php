@@ -14,9 +14,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id_user')->textInput() ?>
 
-    <?= $form->field($model, 'car')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'id_user_car_color')->textInput() ?>
 
-    <?= $form->field($model, 'color')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'car')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

@@ -7,7 +7,7 @@ use frontend\models\VerifyEmailForm;
 use Yii;
 use yii\base\InvalidArgumentException;
 use yii\web\BadRequestHttpException;
-use yii\web\Controller;
+
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
@@ -15,11 +15,13 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use common\models\UserCar;
+use common\models\UserCarColor;
 
 /**
  * Site controller
  */
-class SiteController extends Controller
+class SiteController extends AppController
 {
     /**
      * {@inheritdoc}
@@ -144,6 +146,34 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionHello() {
+        //return 'Hello World';
+        return $this->render('hello');
+    }
+
+
+    /**
+     * Displays about page.
+     *
+     * @return mixed
+     */
+    public function actionCarList()
+    {
+        
+        $mUserCar = new UserCar();
+        $mUserCarColor = new UserCarColor();
+
+        $userCarList = $mUserCar::find()->all();
+
+
+
+        return $this->render('car-list', [ 
+            'mUserCar' => $mUserCar,
+            'mUserCarColor' => $mUserCarColor,
+            'userCarList' => $userCarList
+        ]);
     }
 
     /**
